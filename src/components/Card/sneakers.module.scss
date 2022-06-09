@@ -1,0 +1,93 @@
+.page {
+    .sneakers {
+
+        &__head {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        &__search {
+            border: 1px solid #F3F3F3;
+            border-radius: 10px;
+            height: 100%;
+            padding: 15px 18px;
+            .search__lupa {
+                margin-right: 15px;
+            }
+            .search__input {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+                color: #C4C4C4;
+            }
+        }
+        &__title {
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 39px;
+            color: #000000;
+        }
+        &__carts {
+            display: flex;
+            
+        }
+        &__cart {
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            border: 1px solid #F3F3F3;
+            border-radius: 40px;
+            padding: 0px 15px 35px 15px;
+            width: 210px;
+            margin-right: 40px;
+            transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+            &:hover {
+                box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.06);
+                transform: translateY(-5px);
+            }
+            .cart__text {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17 / 14 * 100%;
+                color: #000000;
+                margin: 15px 0;
+                span {
+                    width: 100%;
+                }
+            }
+            .cart__cross {
+                align-items: center;
+                .cross__like {
+                    position: absolute;
+                    background-color: #FFFFFF;
+                    margin-top: 20px;
+                }
+            }
+        }
+        .cart__info {
+            display: flex;
+            justify-content: space-between;
+            .info__text {
+                font-weight: 500;
+                font-size: 11px;
+                line-height: 13px;
+                text-transform: uppercase;    
+                color: #BDBDBD;
+                margin-bottom: 5px;
+            }
+            .info__price {
+                
+            }
+            .info__num {
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 17px;
+                color: #000000;
+            }
+        }
+    }
+    .add {
+        background-color: #FFFFFF;
+    }
+}
