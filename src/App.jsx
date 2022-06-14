@@ -9,13 +9,14 @@ function App() {
     const [items, setItems] = React.useState([]);
     const [cartItems, setCartItems] = React.useState([]);
     const [searchValue, setSearchValue] = React.useState('');
+    const [cartOpened, setCartOpened] = React.useState(false);
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
-    }
+    };
 
     const onAddToCart = (obj) => {
-        setCartItems((prev) => [...prev, obj])
+        setCartItems((prev) => [...prev, obj]);
     };
 
     React.useEffect(() => {
@@ -30,8 +31,8 @@ function App() {
 
     return (
         <div className="wrapper">
-            <Drawer />
-            <Header />
+            {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} />}
+            <Header onCLickCart={() => setCartOpened(true)} />
             <div className="border__bottom"></div>
             <main className="page">
                 <section className="sneakers">
@@ -49,7 +50,7 @@ function App() {
                                 title={item.title}
                                 price={item.price}
                                 imageUrl={item.imgUrl}
-                                // onPlus={() => onAddToCart(obj)}
+                                onPlus={(obj) => onAddToCart(obj)}
                                 onFavourite={() => console.log("Add To Favourite")}
                             />
                         ))}

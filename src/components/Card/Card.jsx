@@ -1,23 +1,24 @@
 import React from 'react';
 
-function Card(props) {
+function Card({ onFavourite, onPlus, title, price, imageUrl }) {
 
     const [isAdded, setIsAdded] = React.useState(false);
 
     const onClickPlus = () => {
         setIsAdded(!isAdded);
-    }
+        onPlus({ title, price, imageUrl });
+    };
 
     return (
         <div className="sneakers__cart">
             <div className="cart__cross">
-                <button className="cross__like" onClick={props.onFavourite}>
+                <button className="cross__like" onClick={onFavourite}>
                     <img src="/img/carts/unLike.svg" alt="" />
                 </button>
-                <img width={133} height={120} src={props.imageUrl} alt="" />
+                <img width={133} height={120} src={imageUrl} alt="" />
             </div>
             <div className="cart__text">
-                <span>{props.title}</span>
+                <span>{title}</span>
             </div>
             <div className="cart__info">
                 <div className="info__price">
@@ -25,7 +26,7 @@ function Card(props) {
                         <span>Цена:</span>
                     </div>
                     <div className="info__num">
-                        <span>{props.price} руб.</span>
+                        <span>{price} руб.</span>
                     </div>
                 </div>
                 <div className="info__add">
