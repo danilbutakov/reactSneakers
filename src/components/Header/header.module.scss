@@ -34,6 +34,9 @@
         display: flex;
         li {
             margin-right: 30px;
+            text-align: center;
+            align-items: center;
+            cursor: pointer;
             &:last-child {
                 margin: 0;
             }

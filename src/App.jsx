@@ -1,15 +1,21 @@
+import React from 'react';
 import Card from './components/Card/Card';
 import Header from './components/Header/Header';
 import Drawer from './components/Drawer/Drawer';
 
-const arr = [
-    { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12999, imgUrl: "/img/carts/1.jpg" },
-    { title: 'Мужские Кроссовки Nike Air Max 270', price: 10499, imgUrl: "/img/carts/2.jpg" },
-    { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 13499, imgUrl: "/img/carts/3.jpg" },
-    { title: 'Кроссовки Puma X Aka Boku Future Rider', price: 8499, imgUrl: "/img/carts/4.jpg" }
-];
 
 function App() {
+
+    const [items, setItems] = React.useState([]);
+
+    fetch('https://62a85bbc943591102b9ff74a.mockapi.io/items')
+        .then((res) => {
+            return res.json();
+        })
+        .then((json) => {
+            setItems(json);
+        });
+
     return (
         <div className="wrapper">
             <Drawer />
@@ -25,11 +31,13 @@ function App() {
                         </div>
                     </div>
                     <div className="sneakers__carts">
-                        {arr.map((obj) => (
+                        {items.map((obj) => (
                             <Card
                                 title={obj.title}
                                 price={obj.price}
                                 imageUrl={obj.imgUrl}
+                                onPlus={() => console.log("Add Cart")}
+                                onFavourite={() => console.log("Add To Favourite")}
                             />
                         ))}
                     </div>
