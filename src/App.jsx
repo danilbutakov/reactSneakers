@@ -7,14 +7,26 @@ import Drawer from './components/Drawer/Drawer';
 function App() {
 
     const [items, setItems] = React.useState([]);
+    const [cartItems, setCartItems] = React.useState([]);
+    const [searchValue, setSearchValue] = React.useState('');
 
-    fetch('https://62a85bbc943591102b9ff74a.mockapi.io/items')
-        .then((res) => {
-            return res.json();
-        })
-        .then((json) => {
-            setItems(json);
-        });
+    const onChangeSearchInput = (event) => {
+        setSearchValue(event.target.value);
+    }
+
+    const onAddToCart = (obj) => {
+        setCartItems((prev) => [...prev, obj])
+    };
+
+    React.useEffect(() => {
+        fetch('https://62a85bbc943591102b9ff74a.mockapi.io/items')
+            .then((res) => {
+                return res.json();
+            })
+            .then((json) => {
+                setItems(json);
+            });
+    }, []);
 
     return (
         <div className="wrapper">
@@ -24,19 +36,20 @@ function App() {
             <main className="page">
                 <section className="sneakers">
                     <div className="sneakers__head">
-                        <h1 className="sneakers__title">Все кроссовки</h1>
+                        <h1 className="sneakers__title">{searchValue ? `Поиск по запросу: " ${searchValue}"` : `Все кроссовки`}</h1>
                         <div className="sneakers__search">
                             <img className="search__lupa" src="/img/search.svg" alt="Поиск" />
-                            <input className="search__input" type="text" placeholder="Поиск..." name="" id="" />
+                            <input onChange={onChangeSearchInput} className="search__input" value={searchValue} type="text" placeholder="Поиск..." name="" id="" />
                         </div>
                     </div>
                     <div className="sneakers__carts">
-                        {items.map((obj) => (
+                        {items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => (
                             <Card
-                                title={obj.title}
-                                price={obj.price}
-                                imageUrl={obj.imgUrl}
-                                onPlus={() => console.log("Add Cart")}
+                                key={index}
+                                title={item.title}
+                                price={item.price}
+                                imageUrl={item.imgUrl}
+                                // onPlus={() => onAddToCart(obj)}
                                 onFavourite={() => console.log("Add To Favourite")}
                             />
                         ))}
