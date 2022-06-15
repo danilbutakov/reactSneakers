@@ -1,13 +1,13 @@
-function Drawer({ onClose, items = [] }) {
+function Drawer({ onClose, onClickRemoveCart, items = [] }) {
     return (
         <div className="overlay">
             <div className="drawwer">
                 <h2 className="drawwer__title">Корзина <img onClick={onClose} src="/img/carts/remove.svg" alt="Remove" /></h2>
                 <div className="items">
                     <div className="cart">
-                        {items.map((obj) => {
+                        {items.map((obj) => (
                             <div className="cart__item">
-                                <img width={70} height={70} src={obj.imageUrl} alt="" />
+                                <img width={70} height={70} src={obj.imageUrl} alt="Sneakers" />
                                 <div className="cart__texts">
                                     <div className="texts__name">
                                         <span>
@@ -21,10 +21,10 @@ function Drawer({ onClose, items = [] }) {
                                     </div>
                                 </div>
                                 <div className="cart__remove">
-                                    <img src="/img/carts/remove.svg" alt="" />
+                                    <img onClick={onClickRemoveCart} src="/img/carts/remove.svg" alt="" />
                                 </div>
                             </div>
-                        })}
+                        ))}
                     </div>
                 </div>
                 <div className="cart__container">

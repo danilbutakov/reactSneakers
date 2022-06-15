@@ -8,6 +8,7 @@ function App() {
 
     const [items, setItems] = React.useState([]);
     const [cartItems, setCartItems] = React.useState([]);
+    // const [removeCart, setremoveCart] = React.useState([]);
     const [searchValue, setSearchValue] = React.useState('');
     const [cartOpened, setCartOpened] = React.useState(false);
 
@@ -18,6 +19,10 @@ function App() {
     const onAddToCart = (obj) => {
         setCartItems((prev) => [...prev, obj]);
     };
+
+    // const onClickRemoveCart = (obj) => {
+    //     setremoveCart((prev) => [...prev, obj]);
+    // };
 
     React.useEffect(() => {
         fetch('https://62a85bbc943591102b9ff74a.mockapi.io/items')

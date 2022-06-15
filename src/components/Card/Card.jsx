@@ -13,9 +13,9 @@ function Card({ onFavourite, onPlus, title, price, imageUrl }) {
         <div className="sneakers__cart">
             <div className="cart__cross">
                 <button className="cross__like" onClick={onFavourite}>
-                    <img src="/img/carts/unLike.svg" alt="" />
+                    <img src="/img/carts/unLike.svg" alt="unLike" />
                 </button>
-                <img width={133} height={120} src={imageUrl} alt="" />
+                <img width={133} height={120} src={imageUrl} alt="Sneakers" />
             </div>
             <div className="cart__text">
                 <span>{title}</span>
@@ -31,7 +31,7 @@ function Card({ onFavourite, onPlus, title, price, imageUrl }) {
                 </div>
                 <div className="info__add">
                     <button className="add" onClick={onClickPlus}>
-                        <img src={isAdded ? "/img/carts/addGreen.svg" : "img/carts/add.svg"} alt="" />
+                        <img src={isAdded ? "/img/carts/addGreen.svg" : "img/carts/add.svg"} alt="Add" />
                     </button>
                 </div>
             </div>
