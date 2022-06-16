@@ -41,18 +41,22 @@
 
 .items {
     display: flex;
-    height: 100%;
+    flex-direction: column;
     overflow: auto;
     margin-bottom: 40px;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-        display: none; 
+    flex: 0 0 22em;
+    &__container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 }
 
 .cart {
     display: flex;
     flex-direction: column;
+    overflow: auto;
     &__item {
         display: flex;
         align-items: center;
@@ -92,7 +96,6 @@
 }
 
 .cart__down {
-    
     div {
         flex: 1;
         height: 1px;
@@ -102,6 +105,7 @@
         margin: 0 7px;
     }
     .down__item {
+        flex: 1;
         display: flex;
         align-items: center;
         margin-bottom: 20px;
@@ -139,4 +143,72 @@
         top: 21px;
         transition: transform 0.2s ease-in-out;
     }
+}
+
+.cart__clear {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+    align-items: center;
+}
+
+.clear {
+    &__img {
+        width: 120px;
+        height: 120px;
+    }
+    &__title {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 27 / 22 * 100%;
+        color: #000000;
+        margin-top: 20px;
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24 / 16 * 100%;
+        text-align: center;
+        color: #000000;
+        opacity: 0.4;
+        margin-top: 10px;
+    }
+    &__btn {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+        background: #9DD558;
+        border-radius: 18px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19 / 16 * 100%;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 18px 0;
+        margin-top: 20px;
+        transition: background 0.2s ease-in-out;
+
+        &:hover {
+            background: lighten($color: #9DD558, $amount: 7%);
+        }
+        &:active {
+            background: darken($color: #9DD558, $amount: 15%);
+        }
+        position: relative;
+        &:hover {
+            img {
+                transform: translateX(5px);
+            }
+        }
+        img {
+            position: absolute;
+            left: 30px;
+            transition: transform 0.2s ease-in-out;
+            transform: rotate(180deg);
+            top: 21px;
+        }
+        }
 }
