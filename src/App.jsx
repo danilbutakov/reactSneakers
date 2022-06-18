@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import {
+    Route,
+    Routes
+} from "react-router-dom"
 
 import Home from './pages/Home';
 import Favourites from './pages/Favourites';
@@ -52,22 +55,22 @@ function App() {
 
             <div className="border__bottom"></div>
             <main className="page">
-                <Route path={"/"}>
-                    <Home
-                        items={items}
-                        cartItems={cartItems}
-                        searchValue={searchValue}
-                        setSearchValue={setSearchValue}
-                        onAddToCart={onAddToCart
-                        }
-                        onChangeSearchInput={onChangeSearchInput}
-                        onAddToFavourite={onAddToFavourite
-                        }
-                    />
-                </Route>
-                <Route path="/favourites" exact>
-                    <Favourites />
-                </Route>
+                <Routes>
+                    <Route path="/" element={
+                        <Home
+                            items={items}
+                            cartItems={cartItems}
+                            searchValue={searchValue}
+                            setSearchValue={setSearchValue}
+                            onAddToCart={onAddToCart
+                            }
+                            onChangeSearchInput={onChangeSearchInput}
+                            onAddToFavourite={onAddToFavourite
+                            }
+                        />
+                    } />
+                    <Route path="/favourites" element={<Favourites />} />
+                </Routes>
             </main>
         </div >
     );

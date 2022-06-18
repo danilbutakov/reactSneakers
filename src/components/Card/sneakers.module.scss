@@ -30,7 +30,7 @@
         }
         &__carts {
             display: flex;
-            flex-wrap: wrap;
+            flex-flow: row wrap;
         }
         &__cart {
             display: flex;
