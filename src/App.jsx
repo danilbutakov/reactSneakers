@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import Card from './components/Card/Card';
+import { Route } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Favourites from './pages/Favourites';
 import Header from './components/Header/Header';
 import Drawer from './components/Drawer/Drawer';
 
@@ -46,31 +49,27 @@ function App() {
         <div className="wrapper">
             {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
             <Header onCLickCart={() => setCartOpened(true)} />
+
             <div className="border__bottom"></div>
             <main className="page">
-                <section className="sneakers">
-                    <div className="sneakers__head">
-                        <h1 className="sneakers__title">{searchValue ? `Поиск по запросу: " ${searchValue}"` : `Все кроссовки`}</h1>
-                        <div className="sneakers__search">
-                            <img className="search__lupa" src="/img/search.svg" alt="Поиск" />
-                            <input onChange={onChangeSearchInput} className="search__input" value={searchValue} type="text" placeholder="Поиск..." name="" id="" />
-                        </div>
-                    </div>
-                    <div className="sneakers__carts">
-                        {items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => (
-                            <Card
-                                key={index}
-                                title={item.title}
-                                price={item.price}
-                                imageUrl={item.imgUrl}
-                                onPlus={(obj) => onAddToCart(obj)}
-                                onFavourite={(obj) => onAddToFavourite(obj)}
-                            />
-                        ))}
-                    </div>
-                </section>
+                <Route path={"/"}>
+                    <Home
+                        items={items}
+                        cartItems={cartItems}
+                        searchValue={searchValue}
+                        setSearchValue={setSearchValue}
+                        onAddToCart={onAddToCart
+                        }
+                        onChangeSearchInput={onChangeSearchInput}
+                        onAddToFavourite={onAddToFavourite
+                        }
+                    />
+                </Route>
+                <Route path="/favourites" exact>
+                    <Favourites />
+                </Route>
             </main>
-        </div>
+        </div >
     );
 }
 
