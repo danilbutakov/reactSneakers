@@ -33,9 +33,17 @@ function App() {
         setCartItems((prev) => prev.filter((item) => item.id !== id));
     };
 
-    const onAddToFavourite = (obj) => {
-        axios.post('https://62a85bbc943591102b9ff74a.mockapi.io/favourites', obj);
-        setFavourites((prev) => [...prev, obj]);
+    const onAddToFavourite = async (obj) => {
+        try {
+            if (favourites.find((favObj) => favObj.id == obj.id)) {
+                axios.delete(`https://62a85bbc943591102b9ff74a.mockapi.io/favourites/${obj.id}`);
+            } else {
+                const { data } = await axios.post('https://62a85bbc943591102b9ff74a.mockapi.io/favourites', obj);
+                setFavourites((prev) => [...prev, data]);
+            }
+        } catch (error) {
+            alert('Не удалось добавить в закладки');
+        }
     };
 
 
@@ -45,6 +53,9 @@ function App() {
         });
         axios.get('https://62a85bbc943591102b9ff74a.mockapi.io/cart').then((res) => {
             setCartItems(res.data);
+        });
+        axios.get('https://62a85bbc943591102b9ff74a.mockapi.io/favourites').then((res) => {
+            setFavourites(res.data);
         });
     }, []);
 
@@ -69,7 +80,12 @@ function App() {
                             }
                         />
                     } />
-                    <Route path="/favourites" element={<Favourites />} />
+                    <Route path="/favourites" element={
+                        <Favourites
+                            items={favourites}
+                            onAddToFavourite={onAddToFavourite}
+                        />
+                    } />
                 </Routes>
             </main>
         </div >

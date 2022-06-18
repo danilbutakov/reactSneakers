@@ -1,0 +1,11 @@
+.favourites {
+    &__head {
+        margin-bottom: 40px;
+    }
+    &__carts {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+}
+
