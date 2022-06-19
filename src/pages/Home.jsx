@@ -3,6 +3,7 @@ import React from 'react';
 
 function Home({
     items,
+    cartItems,
     searchValue,
     onChangeSearchInput,
     onAddToCart,
@@ -27,6 +28,7 @@ function Home({
                             imageUrl={item.imgUrl}
                             onPlus={(obj) => onAddToCart(obj)}
                             onFavourite={(obj) => onAddToFavourite(obj)}
+                            added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
                         />
                     ))}
             </div>
