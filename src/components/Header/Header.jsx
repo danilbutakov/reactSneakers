@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+// import AppContext from '../../context';
 
 function Header(props) {
+
+    // const { cartItems } = React.useContext(AppContext);
+    // console.log(cartItems.reduce((sum, obj) => obj.price + sum));
 
     return (
         <header className="header">
