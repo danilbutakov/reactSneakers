@@ -2,9 +2,9 @@ import React from 'react';
 import Card from '../components/Card/Card';
 import AppContext from '../context';
 
-function Favourites() {
+function Favorites() {
 
-    const { favourites, onAddToFavourite } = React.useContext(AppContext);
+    const { favorites, onAddToFavorite } = React.useContext(AppContext);
 
     return (
         <section className='favourites'>
@@ -12,11 +12,11 @@ function Favourites() {
                 <h1 className="favourites__title title">Мои закладки</h1>
             </div>
             <div className="sneakers__carts">
-                {favourites.map((item, index) => (
+                {favorites.map((item, index) => (
                     <Card
                         key={index}
-                        favourited={true}
-                        onFavourite={onAddToFavourite}
+                        favorited={true}
+                        onFavorite={onAddToFavorite}
                         {...item}
                     />
                 ))}
@@ -25,4 +25,4 @@ function Favourites() {
     );
 }
 
-export default Favourites;
+export default Favorites;

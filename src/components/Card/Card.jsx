@@ -7,23 +7,21 @@ function Card({
     title,
     imgUrl,
     price,
-    onFavourite,
+    onFavorite,
     onPlus,
-    favourited = false,
-    loading = false,
+    favorited = false,
+    loading = false
 }) {
     const { isItemAdded } = React.useContext(AppContext);
-    const [isFavourite, setIsFavourite] = React.useState(favourited);
-
-    console.log(title, isItemAdded(id));
+    const [isFavorite, setIsFavorite] = React.useState(favorited);
 
     const onClickPlus = () => {
         onPlus({ id, title, imgUrl, price });
     };
 
     const onClickFavourite = () => {
-        onFavourite({ id, title, imgUrl, price });
-        setIsFavourite(!isFavourite);
+        onFavorite({ id, title, imgUrl, price });
+        setIsFavorite(!isFavorite);
     };
 
     return (
@@ -46,7 +44,7 @@ function Card({
                 <>
                     <div className="cart__cross">
                         <button className="cross__like" onClick={onClickFavourite}>
-                            <img src={isFavourite ? "/img/carts/likeRed.svg" : "img/carts/unLike.svg"} alt="unLike" />
+                            <img src={isFavorite ? "/img/carts/likeRed.svg" : "img/carts/unLike.svg"} alt="unLike" />
                         </button>
                         <img width={133} height={120} src={imgUrl} alt="Sneakers" />
                     </div>
