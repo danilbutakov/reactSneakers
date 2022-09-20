@@ -1,46 +1,73 @@
 import React from 'react';
+import ContentLoader from 'react-content-loader';
+import AppContext from '../../context';
 
-function Card({ id, onPlus, onFavourite, title, price, imageUrl, favourited = false, added = false }) {
-    const [isAdded, setIsAdded] = React.useState(added);
-    const [isFavourite, setIsFavourite] = React.useState(favourited);
+function Card({
+    id,
+    title,
+    imgUrl,
+    price,
+    onFavorite,
+    onPlus,
+    favorited = false,
+    loading = false
+}) {
+    const { isItemAdded } = React.useContext(AppContext);
+    const [isFavorite, setIsFavorite] = React.useState(favorited);
 
     const onClickPlus = () => {
-        setIsAdded(!isAdded);
-        onPlus({ id, title, price, imageUrl });
+        onPlus({ id, title, imgUrl, price });
     };
 
     const onClickFavourite = () => {
-        setIsFavourite(!isFavourite);
-        onFavourite({ id, title, imageUrl, price });
+        onFavorite({ id, title, imgUrl, price });
+        setIsFavorite(!isFavorite);
     };
-
 
     return (
         <div className="sneakers__cart">
-            <div className="cart__cross">
-                <button className="cross__like" onClick={onClickFavourite}>
-                    <img src={isFavourite ? "/img/carts/likeRed.svg" : "img/carts/unLike.svg"} alt="unLike" />
-                </button>
-                <img width={133} height={120} src={imageUrl} alt="Sneakers" />
-            </div>
-            <div className="cart__text">
-                <span>{title}</span>
-            </div>
-            <div className="cart__info">
-                <div className="info__price">
-                    <div className="info__text">
-                        <span>Цена:</span>
+            {loading ? (
+                <ContentLoader
+                    speed={2}
+                    width={155}
+                    height={250}
+                    viewBox="0 0 155 265"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb">
+                    <rect x="1" y="0" rx="10" ry="10" width="155" height="155" />
+                    <rect x="0" y="167" rx="5" ry="5" width="155" height="15" />
+                    <rect x="0" y="187" rx="5" ry="5" width="100" height="15" />
+                    <rect x="1" y="234" rx="5" ry="5" width="80" height="25" />
+                    <rect x="124" y="230" rx="10" ry="10" width="32" height="32" />
+                </ContentLoader>
+            ) : (
+                <>
+                    <div className="cart__cross">
+                        <button className="cross__like" onClick={onClickFavourite}>
+                            <img src={isFavorite ? "/img/carts/likeRed.svg" : "img/carts/unLike.svg"} alt="unLike" />
+                        </button>
+                        <img width={133} height={120} src={imgUrl} alt="Sneakers" />
                     </div>
-                    <div className="info__num">
-                        <span>{price} руб.</span>
+                    <div className="cart__text">
+                        <span>{title}</span>
                     </div>
-                </div>
-                <div className="info__add">
-                    <button className="add" onClick={onClickPlus}>
-                        <img src={isAdded ? "/img/carts/addGreen.svg" : "img/carts/add.svg"} alt="Add" />
-                    </button>
-                </div>
-            </div>
+                    <div className="cart__info">
+                        <div className="info__price">
+                            <div className="info__text">
+                                <span>Цена:</span>
+                            </div>
+                            <div className="info__num">
+                                <span>{price} руб.</span>
+                            </div>
+                        </div>
+                        <div className="info__add">
+                            <button className="add" onClick={onClickPlus}>
+                                <img src={isItemAdded(id) ? "/img/carts/addGreen.svg" : "img/carts/add.svg"} alt="Add" />
+                            </button>
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
     );
 }
