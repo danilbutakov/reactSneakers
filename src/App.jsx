@@ -118,7 +118,7 @@ function App() {
                 <div className="border__bottom"></div>
                 <main className="page">
                     <Routes>
-                        <Route path="/" element={
+                        <Route path="" element={
                             <Home
                                 items={items}
                                 cartItems={cartItems}
@@ -130,10 +130,10 @@ function App() {
                                 isLoading={isLoading}
                             />
                         } />
-                        <Route path="/favourites" element={
+                        <Route path="favourites" element={
                             <Favorites />
                         } />
-                        <Route path="/orders" element={
+                        <Route path="orders" element={
                             <Orders />
                         } />
                     </Routes>

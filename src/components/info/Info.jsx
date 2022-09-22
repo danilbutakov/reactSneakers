@@ -12,7 +12,7 @@ const Info = ({ title, description, image }) => {
             <h2 className="clear__title">{title}</h2>
             <p width={120} className="clear__text">{description}</p>
             <button onClick={() => setCartOpened(false)} className="clear__btn">
-                <img width={14} height={12} src="/img/carts/arrowCartButton.svg" alt="Arrow" />
+                <img width={14} height={12} src="img/carts/arrowCartButton.svg" alt="Arrow" />
                 Вернуться назад
             </button>
         </div>
