@@ -23,12 +23,12 @@ function Header(props) {
                     <span className="cart__text">{totalPrice} руб.</span>
                 </li>
                 <li>
-                    <Link to={"/reactSneakers/favourites"}>
+                    <Link to={"/reactSneakers/favourites/"}>
                         < img width={18} height={18} src="img/like.svg" alt='like' />
                     </Link>
                 </li>
                 <li>
-                    <Link to={"/reactSneakers/orders"}>
+                    <Link to={"/reactSneakers/orders/"}>
                         <img width={18} height={18} src="img/user.svg" alt='user' />
                     </Link>
                 </li>

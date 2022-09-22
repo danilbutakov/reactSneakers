@@ -130,10 +130,10 @@ function App() {
                                 isLoading={isLoading}
                             />
                         } />
-                        <Route path="/reactSneakers/favourites" element={
+                        <Route path="/reactSneakers/favourites/" element={
                             <Favorites />
                         } />
-                        <Route path="/reactSneakers/orders" element={
+                        <Route path="/reactSneakers/orders/" element={
                             <Orders />
                         } />
                     </Routes>
