@@ -8,7 +8,7 @@ function Header(props) {
 
     return (
         <header className="header">
-            <Link to={"/"}>
+            <Link to={"home"}>
                 <div className="header__left">
                     <img width={40} height={40} src="img/logo.png" alt='logo' />
                     <div className="header__info">
