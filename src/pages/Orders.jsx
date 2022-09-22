@@ -1,18 +1,17 @@
 import React from 'react';
 import Card from '../components/Card/Card';
 import axios from "axios";
-import AppContext from "../context";
+
 
 function Orders() {
 
-    const {onAddToFavorite, onAddToCart} = React.useContext(AppContext)
     const [isLoading, setIsLoading] = React.useState(true);
     const [orders, setOrders] = React.useState([]);
 
     React.useEffect(() => {
         async function fetchOrders() {
-            try{
-                const {data} = await axios.get('https://62a85bbc943591102b9ff74a.mockapi.io/orders');
+            try {
+                const { data } = await axios.get('https://62a85bbc943591102b9ff74a.mockapi.io/orders');
                 setOrders(data.map((obj) => obj.items).flat());
                 setIsLoading(false);
             } catch (error) {
