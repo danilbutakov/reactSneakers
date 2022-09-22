@@ -118,7 +118,7 @@ function App() {
                 <div className="border__bottom"></div>
                 <main className="page">
                     <Routes>
-                        <Route path="/home" element={
+                        <Route path="/" element={
                             <Home
                                 items={items}
                                 cartItems={cartItems}
