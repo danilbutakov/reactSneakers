@@ -8,7 +8,7 @@ function Header(props) {
 
     return (
         <header className="header">
-            <Link to={"/"}>
+            <Link to={"/reactSneakers/"}>
                 <div className="header__left">
                     <img width={40} height={40} src="img/logo.png" alt='logo' />
                     <div className="header__info">
@@ -23,12 +23,12 @@ function Header(props) {
                     <span className="cart__text">{totalPrice} руб.</span>
                 </li>
                 <li>
-                    <Link to={"/favourites"}>
+                    <Link to={"/reactSneakers/favourites"}>
                         < img width={18} height={18} src="img/like.svg" alt='like' />
                     </Link>
                 </li>
                 <li>
-                    <Link to={"/orders"}>
+                    <Link to={"/reactSneakers/orders"}>
                         <img width={18} height={18} src="img/user.svg" alt='user' />
                     </Link>
                 </li>
