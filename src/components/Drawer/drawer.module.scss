@@ -7,6 +7,18 @@
     width: 100%;
     bottom: 0;
     height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+    overflow: hidden;
+}
+
+.overlayVisible {
+    visibility: visible;
+    opacity: 1;
+    .drawwer {
+        transform: translateX(0%);
+    }
 }
 
 .drawwer {
@@ -19,6 +31,8 @@
     padding: 30px;
     display: flex;
     flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
 
     &__title {
         font-weight: 700;

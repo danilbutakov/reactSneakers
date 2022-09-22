@@ -15,12 +15,15 @@ function Card({
     const { isItemAdded } = React.useContext(AppContext);
     const [isFavorite, setIsFavorite] = React.useState(favorited);
 
+    const obj = { id, parentId: id, title, imgUrl, price };
+
     const onClickPlus = () => {
-        onPlus({ id, title, imgUrl, price });
+        onPlus(obj);
+        console.log(obj);
     };
 
     const onClickFavourite = () => {
-        onFavorite({ id, title, imgUrl, price });
+        onFavorite(obj);
         setIsFavorite(!isFavorite);
     };
 
@@ -43,9 +46,11 @@ function Card({
             ) : (
                 <>
                     <div className="cart__cross">
-                        <button className="cross__like" onClick={onClickFavourite}>
-                            <img src={isFavorite ? "/img/carts/likeRed.svg" : "img/carts/unLike.svg"} alt="unLike" />
-                        </button>
+                        {onFavorite && (
+                            <button className="cross__like" onClick={onClickFavourite}>
+                                <img src={isFavorite ? "/img/carts/likeRed.svg" : "img/carts/unLike.svg"} alt="unLike" />
+                            </button>
+                        )}
                         <img width={133} height={120} src={imgUrl} alt="Sneakers" />
                     </div>
                     <div className="cart__text">
@@ -61,9 +66,11 @@ function Card({
                             </div>
                         </div>
                         <div className="info__add">
-                            <button className="add" onClick={onClickPlus}>
-                                <img src={isItemAdded(id) ? "/img/carts/addGreen.svg" : "img/carts/add.svg"} alt="Add" />
-                            </button>
+                            {onPlus && (
+                                <button className="add" onClick={onClickPlus}>
+                                    <img src={isItemAdded(id) ? "/img/carts/addGreen.svg" : "img/carts/add.svg"} alt="Add" />
+                                </button>
+                            )}
                         </div>
                     </div>
                 </>
