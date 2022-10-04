@@ -50,7 +50,7 @@ function App() {
                 await axios.delete(`https://62a85bbc943591102b9ff74a.mockapi.io/cart/${findItem.id}`);
             } else {
                 setCartItems((prev) => [...prev, obj]);
-                const { data } = await axios.post('https://62a85bbc943591102b9ff74a.mockapi.io/cart', obj);
+                const { data } = await axios.post('https://62a85bbc943591102b9ff74a.mockapi.io/cart, obj);
                 setCartItems((prev) => prev.map(item => {
                     if (item.parentId === data.parentId) {
                         return {
@@ -118,7 +118,7 @@ function App() {
                 <div className="border__bottom"></div>
                 <main className="page">
                     <Routes>
-                        <Route path="/reactSneakers/" element={
+                        <Route path="/" element={
                             <Home
                                 items={items}
                                 cartItems={cartItems}
@@ -130,10 +130,10 @@ function App() {
                                 isLoading={isLoading}
                             />
                         } />
-                        <Route path="/reactSneakers/favourites" element={
+                        <Route path="/favourites" element={
                             <Favorites />
                         } />
-                        <Route path="/reactSneakers/orders" element={
+                        <Route path="/orders" element={
                             <Orders />
                         } />
                     </Routes>
