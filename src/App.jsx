@@ -50,7 +50,7 @@ function App() {
                 await axios.delete(`https://62a85bbc943591102b9ff74a.mockapi.io/cart/${findItem.id}`);
             } else {
                 setCartItems((prev) => [...prev, obj]);
-                const { data } = await axios.post('https://62a85bbc943591102b9ff74a.mockapi.io/cart, obj);
+                const { data } = await axios.post('https://62a85bbc943591102b9ff74a.mockapi.io/cart', obj);
                 setCartItems((prev) => prev.map(item => {
                     if (item.parentId === data.parentId) {
                         return {
