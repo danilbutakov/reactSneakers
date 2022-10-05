@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Info from '../info/Info';
-import {useCart} from "../hooks/useCart";
+import { useCart } from "../hooks/useCart";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -37,7 +37,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
     return (
         <div className={`overlay ${opened ? 'overlayVisible' : ''}`}>
             <div className="drawwer">
-                <h2 className="drawwer__title">Корзина <img onClick={onClose} src="/img/carts/remove.svg" alt="Remove" /></h2>
+                <h2 className="drawwer__title">Корзина <img onClick={onClose} src="img/carts/remove.svg" alt="Remove" /></h2>
                 {
                     items.length > 0 ? (
                         <div className="items__container">
@@ -60,7 +60,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
                                         <div className="cart__remove">
                                             <img
                                                 onClick={() => onRemove(obj.id)}
-                                                src="/img/carts/remove.svg"
+                                                src="img/carts/remove.svg"
                                                 alt="Remove" />
                                         </div>
                                     </div>
@@ -79,11 +79,11 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
                                         <b>{Math.round(totalPrice * 0.05)} руб. </b>
                                     </li>
                                 </ul>
-                                <button disabled={isLoading} onClick={onClickOrder} className="cart__button-order">Оформить заказ<img width={14} height={12} src="/img/carts/arrowCartButton.svg" alt="Arrow" /> </button>
+                                <button disabled={isLoading} onClick={onClickOrder} className="cart__button-order">Оформить заказ<img width={14} height={12} src="img/carts/arrowCartButton.svg" alt="Arrow" /> </button>
                             </div>
                         </div>
                     ) : (
-                        <Info title={isOrderComplete ? "Заказ оформлен" : "Корзина пустая"} description={isOrderComplete ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."} image={isOrderComplete ? "/img/empty/done.svg" : "/img/empty/empty.svg"} />
+                        <Info title={isOrderComplete ? "Заказ оформлен" : "Корзина пустая"} description={isOrderComplete ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."} image={isOrderComplete ? "img/empty/done.svg" : "img/empty/empty.svg"} />
                     )
                 }
             </div>
